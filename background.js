@@ -1,3 +1,6 @@
 chrome.runtime.onInstalled.addListener(function() {
-    console.log("Mi prueba de instalación");
+    let value = "Hola mundo";
+    chrome.storage.sync.set({message: value}, function() {
+        console.log('Nuestra variable es ' + value);
+    });
 });
