@@ -1,0 +1,10 @@
+.type--h2 {
+    font-size: 50px !important;
+    color: indianred;
+}
+
+.mi-clase {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

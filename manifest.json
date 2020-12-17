@@ -19,5 +19,14 @@
     },
     "permissions": [
         "storage", "notifications"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": ["content.js"],
+            "css": ["content.css"]
+        }
     ]
 }
