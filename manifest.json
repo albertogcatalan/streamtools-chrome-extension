@@ -20,13 +20,8 @@
     "permissions": [
         "storage", "notifications"
     ],
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": ["content.js"],
-            "css": ["content.css"]
-        }
-    ]
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": false
+    }
 }
