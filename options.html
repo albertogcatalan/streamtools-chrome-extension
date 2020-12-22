@@ -2,47 +2,37 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Configuración de mi extensión</title>
+        <title>Streamtools Settings</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <style>
             body {
-                text-align: center;
                 width: auto;
-                height: 300px;
+                height: 170px;
             }
         </style>
     </head>
     <body>
-        <div>
-            <div>
-                <div>
-                    Streamtools API Key
-                </div>
-                <input type="text" value="" id="streamtoolsapikey">
-            </div>
-            <div>
-                <div>
-                    Widget
-                </div>
-                <select id="widgettype">
-                    <option value="timer">Timers</option>
-                    <option value="studyroom">Study Room</option>
-                    <option value="flipcoin">Flip a coin</option>
-                    <option value="diceroller">Diceroller</option>
-                    <option value="randomnamepicker">Random Picker</option>
-                </select>
-            </div>
-            <div>
-                <div>
-                    Widget ID
-                </div>
-                <input type="text" value="" id="widgetid">
-            </div>
-        </div>
+        <main role="main" class="">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 py-2">
+                        <div class="mb-2">
+                            <div>
+                                Streamtools API Key
+                            </div>
+                            <input class="form-control" type="text" value="" id="streamtoolsapikey">
+                        </div>
 
-        <button type="button" id="saveButton">Guardar</button>
+                        <button type="button" class="btn btn-success float-right" id="saveButton">Save</button>
 
-        <div id="message"></div>
-        
+                        <div class="alert alert-success float-left d-none" id="message"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="options.js"></script>
     </body>
 </html>

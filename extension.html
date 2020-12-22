@@ -2,18 +2,97 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Mi primera extensión</title>
+        <title>Streamtools Webhook</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <style>
             body {
-                text-align: center;
-                width: 600px;
+                width: 650px;
             }
         </style>
     </head>
     <body>
-        <p>Lanzar petición API Streamtools</p>
-        <button type="button" id="helloWorldButton">Haz click</button>
-        <div id="message"></div>
-        <script src="extension.js"></script>
+        <main role="main" class="">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 py-2">
+                        <div class="alert alert-success float-left d-none" id="message"></div>
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link active" id="timer-tab" data-toggle="pill" href="#timer" role="tab" aria-controls="timer" aria-selected="true">Timers</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" id="studyroom-tab" data-toggle="pill" href="#studyroom" role="tab" aria-controls="studyroom" aria-selected="false">Study Room</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="randomnamepicker-tab" data-toggle="pill" href="#randomnamepicker" role="tab" aria-controls="randomnamepicker" aria-selected="false">Random Picker</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="flipcoin-tab" data-toggle="pill" href="#flipcoin" role="tab" aria-controls="flipcoin" aria-selected="false">Coin Flipper</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="diceroller-tab" data-toggle="pill" href="#diceroller" role="tab" aria-controls="diceroller" aria-selected="false">Dice Roller</a>
+                            </li>
+                            
+                          </ul>
+                          <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="timer" role="tabpanel" aria-labelledby="timer-tab">
+                                <div class="list-group list-timer">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                  </div>
+                            </div>
+                            <div class="tab-pane fade" id="studyroom" role="tabpanel" aria-labelledby="studyroom-tab">
+                                <div class="list-group list-studyroom">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                  </div>
+                            </div>
+                            <div class="tab-pane fade" id="randomnamepicker" role="tabpanel" aria-labelledby="randomnamepicker-tab">
+                                <div class="list-group list-randomnamepicker">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                  </div>
+                            </div>
+                            <div class="tab-pane fade" id="flipcoin" role="tabpanel" aria-labelledby="flipcoin-tab">
+                                <div class="list-group list-flipcoin">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                  </div>
+                            </div>
+                            <div class="tab-pane fade" id="diceroller" role="tabpanel" aria-labelledby="diceroller-tab">
+                                <div class="list-group list-diceroller">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        OT1i2934500 - Mi temporizador
+                                    </a>
+                                  </div>
+                            </div>
+                            
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="js/jquery-1.12.4.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <!--<script src="extension.js"></script>-->
     </body>
 </html>

@@ -1,24 +1,20 @@
 {
-    "name": "Mi primera extensión",
-    "version": "1.1.0",
-    "description": "Extensión del curso de chrome",
+    "name": "Streamtools Webhook",
+    "version": "1.0.0",
+    "description": "Send an action request to a Streamtools widget with remote webhook API",
     "manifest_version": 2,
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
-    },
     "browser_action": {
-        "default_title": "Mi primera extensión",
+        "default_title": "Streamtools Webhook",
         "default_popup": "extension.html"
     },
     "icons": {
-        "16": "images/get_started16.png",
-        "32": "images/get_started32.png",
-        "48": "images/get_started48.png",
-        "128": "images/get_started128.png"
+        "16": "images/logo16.png",
+        "32": "images/logo32.png",
+        "48": "images/logo48.png",
+        "128": "images/logo128.png"
     },
     "permissions": [
-        "storage", "notifications", "*://*.streamtools.com/*"
+        "storage", "*://*.streamtools.com/*"
     ],
     "options_ui": {
         "page": "options.html",
