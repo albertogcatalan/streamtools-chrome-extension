@@ -1,16 +1,12 @@
-async function launchAPI()
+async function launchAPI(widgettype, widgetid)
 {
    var local_apikey = await getLocalStorageValue("streamtoolsapikey");
    console.log(local_apikey);
-   var sync_id = await getSyncStorageValue("widgetid");
-   console.log(sync_id);
-   var sync_type = await getSyncStorageValue("widgettype");
-   console.log(sync_type);
    
    //lanzar api
-   if (local_apikey.streamtoolsapikey && sync_id.widgetid && sync_type.widgettype) {
+   if (local_apikey.streamtoolsapikey && widgettype && widgetid) {
        // funcion api con fetch
-       var url = "https://app.streamtools.com/webhook/"+sync_type.widgettype+"/"+sync_id.widgetid+"/";
+       var url = "https://app.streamtools.com/webhook/"+widgettype+"/"+widgetid+"/";
        var options = {
            "method": 'POST',
            "headers": {
@@ -23,9 +19,63 @@ async function launchAPI()
        const response = callAPI(url, options)
        .then(function(json) {
            console.log(json);
-            var okText = document.createElement("span");
-            okText.textContent = json.status;
-            document.getElementById("message").appendChild(okText);
+           var msg = document.getElementById("message");
+           msg.textContent = json.id+" "+json.action+"!";
+           msg.classList.remove("d-none");
+   
+           setTimeout(function() {
+               msg.textContent = '';
+               msg.classList.add("d-none");
+           }, 2000);
+       }).catch(function(error) {
+           console.log(error);
+       });
+   }
+}
+
+async function fetchData(widgettype)
+{
+    var local_apikey = await getLocalStorageValue("streamtoolsapikey");
+   
+   //lanzar api
+   if (local_apikey.streamtoolsapikey && widgettype) {
+       // funcion api con fetch
+       var url = "https://app.streamtools.com/webhook/"+widgettype+"/";
+       var options = {
+           "method": 'GET',
+           "headers": {
+               "X-API-KEY": local_apikey.streamtoolsapikey,
+               "content-type": "application/json"
+           }
+       };
+
+       const response = callAPI(url, options)
+       .then(function(json) {
+           console.log(json);
+           var list = $((".list-"+widgettype));
+           list.empty();
+           for (var i = 0; i < json.length; i++) {
+               var widget = json[i];
+               if (widget.slug) {
+                    var newElement = $(document.createElement('a'));
+                    newElement.attr("href", "#");
+                    newElement.addClass("list-group-item list-group-item-action");
+                    newElement.text(widget.slug+" - "+widget.title);
+                    newElement.data("slug", widget.slug);
+               } else {
+                    var newElement = $(document.createElement('p'));
+                    newElement.text("You do not have any tool created.");
+               }
+               newElement.appendTo(list);
+           }
+
+           $('.list-group-item').on('click', function(e) {
+            e.preventDefault();
+            var widgetid = $(this).data("slug");
+            var widgettype = $(this).parent().parent().attr("id");
+            launchAPI(widgettype, widgetid);
+           });
+
        }).catch(function(error) {
            console.log(error);
        });
@@ -66,4 +116,11 @@ async function getSyncStorageValue(key)
     });
 }
 
-document.getElementById('helloWorldButton').addEventListener('click', launchAPI);
+$('#pills-tab a').on('click', function(e) {
+    e.preventDefault();
+    var link = $(this).attr('href');
+    var widgettype = link.replace("#", '');
+    fetchData(widgettype);
+    $(this).tab('show');
+});
+$('#timer-tab').click();
