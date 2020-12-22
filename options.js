@@ -1,27 +1,34 @@
-function guardar() {
-    var color = document.getElementById("variableListado").value;
-    var checkbox = document.getElementById("variableCheckbox").checked;
+function saveOptions() {
+    var streamtoolsapikey = document.getElementById("streamtoolsapikey").value;
+    var widgetid = document.getElementById("widgetid").value;
+    var widgettype = document.getElementById("widgettype").value;
 
-    chrome.storage.sync.set({color: color, checkbox: checkbox}, function() {
-        var mensaje = document.getElementById("mensaje");
-        mensaje.textContent = "Guardado con éxito";
+    chrome.storage.sync.set({widgetid: widgetid, widgettype: widgettype}, function() {
+        chrome.storage.local.set({streamtoolsapikey: streamtoolsapikey}, function() {
+            var msg = document.getElementById("message");
+            msg.textContent = "Guardado con éxito";
 
-        setTimeout(function() {
-            mensaje.textContent = '';
-        }, 2000);
+            setTimeout(function() {
+                msg.textContent = '';
+            }, 2000);
+        });
     });
 }
 
-function cargar()
+function loadOptions()
 {
-    chrome.storage.sync.get("color", function(result) {
-        document.getElementById("variableListado").value = result.color;
+    chrome.storage.sync.get("widgetid", function(result) {
+        document.getElementById("widgetid").value = result.widgetid || '';
     });
 
-    chrome.storage.sync.get("checkbox", function(result) {
-        document.getElementById("variableCheckbox").checked = result.checkbox;
+    chrome.storage.sync.get("widgettype", function(result) {
+        document.getElementById("widgettype").value = result.widgettype || '';
+    });
+
+    chrome.storage.local.get("streamtoolsapikey", function(result) {
+        document.getElementById("streamtoolsapikey").value = result.streamtoolsapikey || '';
     });
 }
 
-document.addEventListener('DOMContentLoaded', cargar);
-document.getElementById('guardar').addEventListener('click', guardar);
+document.addEventListener('DOMContentLoaded', loadOptions);
+document.getElementById('saveButton').addEventListener('click', saveOptions);

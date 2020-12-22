@@ -6,31 +6,42 @@
         <style>
             body {
                 text-align: center;
-                width: 600px;
+                width: auto;
+                height: 300px;
             }
         </style>
     </head>
     <body>
-        
-        Mis opciones:
-        <select id="variableListado">
-            <option value="verde">Verde</option>
-            <option value="rojo">Rojo</option>
-            <option value="azul">Azul</option>
-        </select>
+        <div>
+            <div>
+                <div>
+                    Streamtools API Key
+                </div>
+                <input type="text" value="" id="streamtoolsapikey">
+            </div>
+            <div>
+                <div>
+                    Widget
+                </div>
+                <select id="widgettype">
+                    <option value="timer">Timers</option>
+                    <option value="studyroom">Study Room</option>
+                    <option value="flipcoin">Flip a coin</option>
+                    <option value="diceroller">Diceroller</option>
+                    <option value="randomnamepicker">Random Picker</option>
+                </select>
+            </div>
+            <div>
+                <div>
+                    Widget ID
+                </div>
+                <input type="text" value="" id="widgetid">
+            </div>
+        </div>
 
-        <br>
+        <button type="button" id="saveButton">Guardar</button>
 
-        <label>
-            <input type="checkbox" id="variableCheckbox">
-            Marcar mi opción
-        </label>
-
-        <br>
-
-        <div id="mensaje"></div>
-
-        <button type="button" id="guardar">Guardar</button>
+        <div id="message"></div>
         
     <script src="options.js"></script>
     </body>
