@@ -1,12 +1,9 @@
 async function launchAPI(widgettype, widgetid)
 {
    var local_apikey = await getLocalStorageValue("streamtoolsapikey");
-   console.log(local_apikey);
-   
-   //lanzar api
+
    if (local_apikey.streamtoolsapikey && widgettype && widgetid) {
-       // funcion api con fetch
-       var url = "https://app.streamtools.com/webhook/"+widgettype+"/"+widgetid+"/";
+       var url = apiURL+widgettype+"/"+widgetid+"/";
        var options = {
            "method": 'POST',
            "headers": {
@@ -37,10 +34,8 @@ async function fetchData(widgettype)
 {
     var local_apikey = await getLocalStorageValue("streamtoolsapikey");
    
-   //lanzar api
    if (local_apikey.streamtoolsapikey && widgettype) {
-       // funcion api con fetch
-       var url = "https://app.streamtools.com/webhook/"+widgettype+"/";
+       var url = apiURL+widgettype+"/";
        var options = {
            "method": 'GET',
            "headers": {
@@ -51,7 +46,6 @@ async function fetchData(widgettype)
 
        const response = callAPI(url, options)
        .then(function(json) {
-           console.log(json);
            var list = $((".list-"+widgettype));
            list.empty();
            for (var i = 0; i < json.length; i++) {
@@ -116,6 +110,7 @@ async function getSyncStorageValue(key)
     });
 }
 
+const apiURL = "https://app.streamtools.com/webhook/";
 $('#pills-tab a').on('click', function(e) {
     e.preventDefault();
     var link = $(this).attr('href');
