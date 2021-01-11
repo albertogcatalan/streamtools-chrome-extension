@@ -3,6 +3,10 @@ async function launchAPI(widgettype, widgetid)
    var local_apikey = await getLocalStorageValue("streamtoolsapikey");
 
    if (local_apikey.streamtoolsapikey && widgettype && widgetid) {
+        var list = '';
+        if (widgettype == 'randomnamepicker') {
+            list = $("textarea#list").val();
+        }
        var url = apiURL+widgettype+"/"+widgetid+"/";
        var options = {
            "method": 'POST',
@@ -10,7 +14,7 @@ async function launchAPI(widgettype, widgetid)
                "X-API-KEY": local_apikey.streamtoolsapikey,
                "content-type": "application/json"
            },
-           "body": JSON.stringify({"action": "start"})
+           "body": JSON.stringify({"action": "start", "list": list})
        };
 
        const response = callAPI(url, options)
